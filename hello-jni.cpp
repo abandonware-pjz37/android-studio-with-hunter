@@ -17,15 +17,20 @@
 #include <string.h>
 #include <jni.h>
 
+#include <string>
+#include <sstream>
+#include <iomanip>
+
+#include <md5/md5.h>
+
 /* This is a trivial JNI example where we use a native method
  * to return a new VM String. See the corresponding Java source
  * file located at:
  *
  *   hello-jni/app/src/main/java/com/example/hellojni/HelloJni.java
  */
-JNIEXPORT jstring JNICALL
-Java_com_example_hellojni_HelloJni_stringFromJNI( JNIEnv* env,
-                                                  jobject thiz )
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_example_hellojni_HelloJni_stringFromJNI(JNIEnv* env, jobject thiz)
 {
 #if defined(__arm__)
     #if defined(__ARM_ARCH_7A__)
@@ -59,5 +64,30 @@ Java_com_example_hellojni_HelloJni_stringFromJNI( JNIEnv* env,
 #define ABI "unknown"
 #endif
 
-    return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");
+  return (*env).NewStringUTF("ABI: " ABI);
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_example_hellojni_HelloJni_calculateMD5(JNIEnv* env, jobject thiz, jstring input) {
+  static_assert(sizeof(char) == sizeof(md5_byte_t), "");
+
+  const char* input_str = (*env).GetStringUTFChars(input, JNI_FALSE);
+
+  enum { DIGEST_SIZE = 16 };
+  md5_byte_t digest[DIGEST_SIZE];
+
+  md5_state_t s;
+  md5_init(&s);
+  md5_append(&s, (const md5_byte_t*)input_str, std::strlen(input_str));
+  md5_finish(&s, digest);
+
+  (*env).ReleaseStringUTFChars(input, input_str);
+
+  std::ostringstream stream;
+  stream << std::hex;
+  for (int i=0; i<DIGEST_SIZE; ++i) {
+    stream << std::setw(2) << std::setfill('0') << static_cast<unsigned>(digest[i]);
+  }
+
+  return (*env).NewStringUTF(stream.str().c_str());
 }
