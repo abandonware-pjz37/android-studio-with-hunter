@@ -7,14 +7,57 @@
     android:layout_height="match_parent"
     tools:context="com.example.hellojni.HelloJni">
 
-    <TextView
-        android:id="@+id/hello_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_hello_jni"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_hello_jni"
-        app:layout_constraintRight_toRightOf="@+id/activity_hello_jni"
-        app:layout_constraintTop_toTopOf="@+id/activity_hello_jni" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/inputTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Some string"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <Button
+            android:id="@+id/calcButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculate" />
+
+        <TextView
+            android:id="@+id/md5ResultView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="MD5" />
+
+        <TextView
+            android:id="@+id/archTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Architecture"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_hello_jni"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_hello_jni"
+            app:layout_constraintRight_toRightOf="@+id/activity_hello_jni"
+            app:layout_constraintTop_toTopOf="@+id/activity_hello_jni"
+            app:layout_constraintVertical_bias="0.623" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

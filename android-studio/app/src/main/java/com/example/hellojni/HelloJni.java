@@ -17,7 +17,10 @@ package com.example.hellojni;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
+import android.view.View.OnClickListener;
 
 public class HelloJni extends AppCompatActivity {
 
@@ -29,14 +32,29 @@ public class HelloJni extends AppCompatActivity {
          * function.
          */
         setContentView(R.layout.activity_hello_jni);
-        TextView tv = (TextView)findViewById(R.id.hello_textview);
+        TextView tv = (TextView)findViewById(R.id.archTextView);
         tv.setText( stringFromJNI() );
+
+        final TextView inputView = (TextView)findViewById(R.id.inputTextView);
+
+        Button button = findViewById(R.id.calcButton);
+        OnClickListener listener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView resultView = (TextView)findViewById(R.id.md5ResultView);
+                String input = inputView.getText().toString();
+                String result = calculateMD5(input);
+                resultView.setText("MD5: " + result);
+            }
+        };
+        button.setOnClickListener(listener);
     }
     /* A native method that is implemented by the
      * 'hello-jni' native library, which is packaged
      * with this application.
      */
-    public native String  stringFromJNI();
+    public native String stringFromJNI();
+    public native String calculateMD5(String input);
 
     /* This is another native method declaration that is *not*
      * implemented by 'hello-jni'. This is simply to show that
