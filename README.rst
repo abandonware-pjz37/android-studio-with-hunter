@@ -6,12 +6,15 @@ Android Studio with Hunter
 Example of using Android Studio project with Hunter package manager.
 
 This is modified example of HelloJni sample:
+
 * https://github.com/googlesamples/android-ndk/tree/master/hello-jni
 
 Small one-file MD5 hash calculation C library as a third party:
+
 * https://docs.hunter.sh/en/latest/packages/pkg/md5.html
 
 Minimal CMake version 3.9.2:
+
 * https://gitlab.kitware.com/cmake/cmake/issues/17253
 
 Tested with:
