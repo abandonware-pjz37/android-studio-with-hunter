@@ -76,6 +76,10 @@ set(
     "Original Android NDK toolchain"
 )
 
+if("${_INTERNAL_ANDROID_STUDIO_ORIGINAL_CMAKE_TOOLCHAIN_FILE}" STREQUAL "${CMAKE_CURRENT_LIST_FILE}")
+  message(FATAL_ERROR "Internal error")
+endif()
+
 set(ANDROID_NDK "") # Suppress warning
 include("${_INTERNAL_ANDROID_STUDIO_ORIGINAL_CMAKE_TOOLCHAIN_FILE}")
 
