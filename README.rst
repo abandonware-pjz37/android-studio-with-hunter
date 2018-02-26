@@ -20,7 +20,7 @@ Minimal CMake version 3.9.2:
 Tested with:
 
 * CMake 3.10.1
-* Android Studio 3.2 Canary 3, built on February 8, 2018
+* Android Studio 3.2 Canary 4, built on February 21, 2018
 * Linux
 
 Hints
