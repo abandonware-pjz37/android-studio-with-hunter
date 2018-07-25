@@ -22,8 +22,8 @@ option(HUNTER_STATUS_DEBUG "Print debug info" ON)
 
 include(cmake/HunterGate.cmake)
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.20.11.tar.gz"
-    SHA1 "4959eb9f4d01b5d6a7242b2b6ad7baa059c174ae"
+    URL "https://github.com/ruslo/hunter/archive/v0.23.3.tar.gz"
+    SHA1 "2c421912930d183c24512590014f955ff073424b"
 )
 
 project(hello-jni)
