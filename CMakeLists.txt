@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.9.2)
 # For Android Studio we will force generated toolchain
 if(HELLOJNI_ANDROID_STUDIO)
   set(gen_toolchain "${CMAKE_CURRENT_BINARY_DIR}/generated/toolchain.cmake")
+  file(TO_CMAKE_PATH "${CMAKE_TOOLCHAIN_FILE}" CMAKE_TOOLCHAIN_FILE_CMAKE_PATH)
   configure_file(
       "${CMAKE_CURRENT_LIST_DIR}/cmake/template/toolchain.cmake.in"
       "${gen_toolchain}"
