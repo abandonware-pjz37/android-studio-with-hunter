@@ -21,6 +21,17 @@ option(HUNTER_KEEP_PACKAGE_SOURCES "Keep third party sources" ON)
 
 option(HUNTER_STATUS_DEBUG "Print debug info" ON)
 
+# Added for simplicity of testing. Usually, you don't need this part.
+# A recommended way to set HUNTER_ROOT is environment variable
+# or default '~/.hunter' directory.
+set(
+    HUNTER_ROOT
+    "${CMAKE_CURRENT_LIST_DIR}/.hunter"
+    CACHE
+    PATH
+    "Hunter root"
+)
+
 include(cmake/HunterGate.cmake)
 HunterGate(
     URL "https://github.com/ruslo/hunter/archive/v0.23.3.tar.gz"
